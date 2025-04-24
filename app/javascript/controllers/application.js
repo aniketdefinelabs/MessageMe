@@ -1,4 +1,6 @@
-import { Application } from "@hotwired/stimulus"
+import { Application } from "@hotwired/stimulus";
+import "stylesheets/application";
+
 
 const application = Application.start()
 
@@ -6,4 +8,10 @@ const application = Application.start()
 application.debug = false
 window.Stimulus   = application
 
-export { application }
+export { application };
+
+$(document).on('turbolinks:load',function(){
+    $('.ui.dropdown').dropdown()
+;
+})
+
