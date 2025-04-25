@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MessageMe - Complete Chat App</title>
+    <!-- Add Semantic UI CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        /* Orange button styles */
+        .ui.orange.button, .ui.orange.buttons .button {
+            background-color: #f2711c;
+            color: white;
+        }
+        .ui.orange.button:hover, .ui.orange.buttons .button:hover {
+            background-color: #e67a0a;
+        }
+        /* Adjust the placeholder segment */
+        .ui.placeholder.segment {
+            margin-top: 20px;
+        }
+        /* Center the divider text */
+        .ui.vertical.divider {
+            color: #f2711c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to MessageMe - a complete Chat App</h1>
+
+        <h2 class="ui center aligned icon header">
+            <i class="circular orange power off icon"></i>
+            Log in to Continue
+        </h2>
+        
+        <div class="ui placeholder segment">
+            <div class="ui two column very relaxed stackable grid">
+                <div class="column">
+                    <div class="ui form">
+                        <div class="field">
+                            <label>Username</label>
+                            <div class="ui left icon input">
+                                <input type="text" placeholder="Username">
+                                <i class="user icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <div class="ui left icon input">
+                                <input type="password" placeholder="Password">
+                                <i class="lock icon"></i>
+                            </div>
+                        </div>
+                        <div class="ui orange submit button">Login</div>
+                    </div>
+                </div>
+                <div class="middle aligned column">
+                    <div class="ui big orange button">
+                        <i class="signup icon"></i>
+                        Sign Up
+                    </div>
+                </div>
+            </div>
+            <div class="ui vertical divider">
+                Or
+            </div>
+        </div>
+    </div>
+
+    <!-- Add jQuery and Semantic UI JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Add form submission handler
+            $('.ui.form').submit(function(e) {
+                e.preventDefault();
+                alert('Login functionality would go here!');
+            });
+            
+            // Make the Sign Up button clickable
+            $('.ui.big.orange.button').click(function() {
+                alert('Sign up functionality would go here!');
+            });
+        });
+    </script>
+</body>
+</html>

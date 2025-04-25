@@ -8,3 +8,21 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+ .chatbox{
+    height: 450px;
+}
+
+
+.custom-menu-height {
+    height: 400px; /* Or whatever height you want */
+    overflow-y: auto;
+    width: 0px; /* Allows scrolling if content overflows */
+  }
+  
+
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  

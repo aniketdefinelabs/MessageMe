@@ -1,21 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MessageMe</title>
+  
+  <!-- Removed ERB tags since this appears to be a standalone HTML file -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+  
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .ui.grid.full-height {
+      height: calc(100% - 100px); /* Account for header height */
+      align-items: stretch; /* Changed from center to stretch for better card heights */
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .chatbox, .menu-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chatbox .content {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .menu-card .content {
+      height: 100%;
+    }
+    
+    .menu-card .menu {
+      height: 100%;
+      overflow-y: auto;
+    }
+    
+    .ui.header {
+      margin-top: 20px;
+    }
+    
+    .ui.reply.form {
+      margin-top: 20px;
+    }
+    
+    /* Better mobile responsiveness */
+    @media only screen and (max-width: 767px) {
+      .ui.grid.full-height {
+        flex-direction: column;
+        height: auto;
+      }
+      
+      .ten.wide.column, .six.wide.column {
+        width: 100% !important;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    
+  <div class="ui container">
+    <h2 class="ui center aligned icon header">
+      <i class="circular orange coffee icon"></i>
+      Say Something
+    </h2>
+
+    <div class="ui grid full-height">
+      <!-- Left Column -->
+      <div class="ten wide column">
+        <div class="ui fluid raised card chatbox">
+          <div class="content">
+            <!-- Feed on the left -->
+            <div class="ui small feed">
+              <h4 class="ui header">Followers Activity</h4>
+
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                    <a>Elliot Fu</a> added <a>Jenny Hess</a> as a friend
+                  </div>
+                </div>
+              </div>
+
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                    <a>Stevie Feliciano</a> added <a>Elliot Fu</a> as a friend
+                  </div>
+                </div>
+              </div>
+
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                    <a>Helen Troy</a> added <a>Christian Rocha</a> as a friend
+                  </div>
+                </div>
+              </div>
+
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                    <a>Christian Rocha</a> signed up for the site.
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Additional sample content to demonstrate scrolling -->
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                    <a>Sarah Smith</a> posted a new message.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+                    <a>John Doe</a> liked your post.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <form class="ui reply form">
+              <div class="field">
+                <textarea placeholder="Write your message..."></textarea>
+              </div>
+              <button class="ui blue labeled submit icon button" type="submit">
+                <i class="icon edit"></i> Add Reply
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="six wide column">
+        <div class="ui fluid raised card menu-card">
+          <div class="content">
+            <div class="ui vertical pointing menu">
+              <a class="active item">Home</a>
+              <a class="item">Messages</a>
+              <a class="item">Friends</a>
+              <a class="item">Settings</a>
+              <a class="item">Notifications</a>
+              <a class="item">Profile</a>
+              <a class="item">Help</a>
+              <a class="item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      $('.ui.dropdown').dropdown();
+      
+      // Form submission handler
+      $('.ui.reply.form').submit(function(e) {
+        e.preventDefault();
+        const message = $(this).find('textarea').val().trim();
+        if (message) {
+          const newEvent = `
+            <div class="event">
+              <div class="content">
+                <div class="summary">
+                  You: ${message}
+                </div>
+              </div>
+            </div>
+          `;
+          $('.ui.feed').prepend(newEvent);
+          $(this).find('textarea').val('');
+        }
+      });
+    });
+  </script>
 </body>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    $('.ui.dropdown').dropdown();
-  });
-
-  $('.ui.dropdown')
-  .dropdown()
-;
-</script>
-
 </html>
